@@ -3,7 +3,7 @@ const { login, addUser } = require("../Controllers/users");
 const {
 	loginValidator,
 	registerValidatior,
-} = require("../Middlewares/validator");
+} = require("../Middlewares/userValidator");
 
 const router = Router();
 

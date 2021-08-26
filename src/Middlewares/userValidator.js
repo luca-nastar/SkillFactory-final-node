@@ -1,5 +1,3 @@
-const db = require("../config/database.config");
-
 exports.loginValidator = (req, res, next) => {
 	const { username, password } = req.body;
 

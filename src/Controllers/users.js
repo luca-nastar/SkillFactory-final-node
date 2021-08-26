@@ -6,7 +6,7 @@ const login = (req, res) => {
 	const { username, password } = req.body;
 
 	const sql =
-		"SELECT full_name, username, password, role FROM users WHERE username = ?";
+		"SELECT id, full_name, username, password, role FROM users WHERE username = ?";
 	db.query(sql, username, (err, user) => {
 		if (err) {
 			return res.status(401).send(err);
@@ -32,6 +32,7 @@ const login = (req, res) => {
 			}
 
 			return res.status(200).json({
+				ok: true,
 				accessToken: createAccessToken(user[0]),
 				refreshToken: createRefreshToken(user[0]),
 			});
@@ -64,7 +65,9 @@ const addUser = (req, res) => {
 				.json({ ok: false, msg: "No se pudo registrar al usuario." });
 		}
 
-		return res.status(201).json({ msg: "Usuario creado correctamente." });
+		return res
+			.status(201)
+			.json({ ok: true, msg: "Usuario creado correctamente." });
 	});
 };
 

@@ -9,8 +9,12 @@ app.use(cors());
 
 //Load Routes
 const usersRoutes = require("./Routes/users");
+const moviesRoutes = require("./Routes/movies");
+const favsRoutes = require("./Routes/favsMovies");
 
 //Basic Routes
 app.use("/", usersRoutes);
+app.use("/", moviesRoutes);
+app.use("/", favsRoutes);
 
 module.exports = app;

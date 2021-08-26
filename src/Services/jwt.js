@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 const secretKey = process.env.SECRET_KEY;
 
 const createAccessToken = (data) => {
-	const { full_name, username, role } = data;
+	const { id, full_name, username, role } = data;
 
 	const payload = {
+		id,
 		full_name,
 		username,
 		role,
@@ -15,9 +16,10 @@ const createAccessToken = (data) => {
 };
 
 const createRefreshToken = (data) => {
-	const { full_name, username, role } = data;
+	const { id, full_name, username, role } = data;
 
 	const payload = {
+		id,
 		full_name,
 		username,
 		role,
