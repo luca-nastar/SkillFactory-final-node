@@ -6,6 +6,14 @@ Esta es la parte de NodeJS del proyecto final del Skill Factory.
 
 Esta API que permite registar usuarios y hacer login, que si es correcto devuelve un Token. Tambien se conecta con una base de datos MySQL y permite traer una lista de todas las peliculas o solo de las peliculas favoritas del usuario logeado, agregar y quitar peliculas de favoritos. Si el usuario es administrador, tambien permite agregar y editar peliculas.
 
+## Login de ejemplo
+- Admin User
+  - username: admin
+  - password: admin
+- Normal User
+  - username: normalUser
+  - password: normalUser
+
 ## Ednpoints
 
 ### Users
@@ -29,6 +37,6 @@ Esta API que permite registar usuarios y hacer login, que si es correcto devuelv
 
 - Clonar el proyecto usando `git clone https://github.com/luca-nastar/SkillFactory-final-node`.
 - Importar la base de datos que esta en la carpeta "Database".
-- Crear archivo .env apartir del archivo ".envExample".
+- Crear archivo .env a partir del archivo ".envExample".
 - Ejecutar `npm install` o `yarn` en la carpeta del proyecto.
 - Ejecutar `npm start` o `node` en la terminal.
