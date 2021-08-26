@@ -21,7 +21,7 @@ const getAllMovies = (req, res) => {
 const addMovie = (req, res) => {
 	const { name, description, cover_img } = req.body;
 
-	let coverUrl = cover_img
+	const coverUrl = cover_img
 		? cover_img
 		: "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/v0eQLbzT6sWelfApuYsEkYpzufl.jpg";
 

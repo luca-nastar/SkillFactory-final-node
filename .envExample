@@ -1,0 +1,5 @@
+DB_HOST = IP donde esta hosteada la base de datos.
+DB_USER = Usuario de la base de datos.
+DB_PASSWORD = Contraseña del ususario.
+DB_NAME = Nombre de la base de datos.
+SECRET_KEY = Una frase secreta.

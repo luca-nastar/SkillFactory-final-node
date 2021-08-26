@@ -28,6 +28,7 @@ const addFavMovie = (req, res) => {
 
 	const sqlInsert = "INSERT INTO user_movie SET id_user = ?, id_movie = ?";
 
+	//Verificamos si ya esta como favorita la pelicula
 	db.query(sqlSelect, [id_user, id_movie], (err, rows) => {
 		if (err) {
 			return res.status(500).json({ ok: false, msg: "Error del servidor." });
@@ -39,6 +40,7 @@ const addFavMovie = (req, res) => {
 				.json({ ok: false, msg: "La pelicula ya esta en favoritos" });
 		}
 
+		//En caso de que no este la agregamos como favorita
 		db.query(sqlInsert, [id_user, id_movie], (err, rows) => {
 			if (err) {
 				if (err.errno === 1452) {
@@ -72,6 +74,7 @@ const removeFavMovie = (req, res) => {
 	const sqlDelete =
 		"DELETE FROM user_movie WHERE id_user = ? AND id_movie = ? ";
 
+	//Verificamos si esta como favorita la pelicula
 	db.query(sqlSelect, [id_user, id_movie], (err, rows) => {
 		if (err) {
 			return res.status(500).json({ ok: false, msg: "Error del servidor." });
@@ -83,6 +86,7 @@ const removeFavMovie = (req, res) => {
 				.json({ ok: false, msg: "La pelicula no esta en favoritos" });
 		}
 
+		//En caso de que si este, la sacamos de favoritos
 		db.query(sqlDelete, [id_user, id_movie], (err, rows) => {
 			if (err) {
 				return res.status(500).json({ ok: false, msg: "Error del servidor." });
