@@ -1,7 +1,7 @@
 const db = require("../config/database.config");
 
 const getAllMovies = (req, res) => {
-	const sql = "SELECT name, description, cover_img FROM movies";
+	const sql = "SELECT id, name, description, cover_img FROM movies";
 
 	db.query(sql, (err, rows) => {
 		if (err) {
