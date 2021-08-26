@@ -6,6 +6,14 @@ Esta es la parte de NodeJS del proyecto final del Skill Factory.
 
 Esta API que permite registar usuarios y hacer login, que si es correcto devuelve un Token. Tambien se conecta con una base de datos MySQL y permite traer una lista de todas las peliculas o solo de las peliculas favoritas del usuario logeado, agregar y quitar peliculas de favoritos. Si el usuario es administrador, tambien permite agregar y editar peliculas.
 
+## Login de ejemplo
+- Admin User
+  - username: admin
+  - password: admin
+- Normal User
+  - username: normalUser
+  - password: normalUser
+
 ## Ednpoints
 
 ### Users
