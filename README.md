@@ -29,6 +29,6 @@ Esta API que permite registar usuarios y hacer login, que si es correcto devuelv
 
 - Clonar el proyecto usando `git clone https://github.com/luca-nastar/SkillFactory-final-node`.
 - Importar la base de datos que esta en la carpeta "Database".
-- Crear archivo .env apartir del archivo ".envExample".
+- Crear archivo .env a partir del archivo ".envExample".
 - Ejecutar `npm install` o `yarn` en la carpeta del proyecto.
 - Ejecutar `npm start` o `node` en la terminal.
