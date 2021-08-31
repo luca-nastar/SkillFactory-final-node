@@ -1,25 +1,25 @@
 const db = require("../config/database.config");
 
 const getAllMovies = (req, res) => {
-	const sql = "SELECT id, name, description, cover_img FROM movies";
+	const sql =
+		"SELECT id, name, cover_img, quote, release_date FROM movies ORDER BY id DESC";
 
-	db.query(sql, (err, rows) => {
+	db.query(sql, (err, movies) => {
 		if (err) {
 			return res.status(500).json({ ok: false, msg: "Error del servidor" });
 		}
 
-		if (!rows) {
+		if (!movies) {
 			return res
 				.status(400)
 				.json({ ok: false, msg: "No se encontraron datos" });
 		}
-
-		return res.status(200).json({ ok: true, movies: rows });
+		return res.status(200).json({ ok: true, movies });
 	});
 };
 
 const addMovie = (req, res) => {
-	const { name, description, cover_img } = req.body;
+	const { name, cover_img, quote, release_date } = req.body;
 
 	const coverUrl = cover_img
 		? cover_img
@@ -27,8 +27,9 @@ const addMovie = (req, res) => {
 
 	const newMovie = {
 		name,
-		description,
 		cover_img: coverUrl,
+		quote,
+		release_date,
 	};
 
 	const sql = "INSERT INTO movies SET ?";
@@ -40,7 +41,7 @@ const addMovie = (req, res) => {
 					.status(400)
 					.json({ ok: false, msg: "La pelicula ya existe" });
 			}
-			return res.status(500).json({ ok: false, msg: "Erorr del servidor." });
+			return res.status(500).json({ ok: false, msg: "Error del servidor." });
 		}
 		if (!rows) {
 			return res

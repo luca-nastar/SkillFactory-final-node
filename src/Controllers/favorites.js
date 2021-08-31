@@ -1,10 +1,28 @@
 const db = require("../config/database.config");
 
+const getIdFavMovies = (req, res) => {
+	const { id_user } = req.params;
+
+	const sql = "SELECT id_movie FROM user_movie WHERE id_user = ?";
+
+	db.query(sql, id_user, (err, rows) => {
+		if (err) {
+			return res.status(500).json({ ok: false, msg: "Error del servidor" });
+		}
+		let id_favs = [];
+		rows.forEach((row) => {
+			id_favs.push(row.id_movie);
+		});
+
+		return res.status(200).json({ ok: true, id_favs });
+	});
+};
+
 const getFavMovies = (req, res) => {
 	const { id_user } = req.params;
 
 	const sql =
-		"SELECT m.name, m.description, m.cover_img FROM user_movie um INNER JOIN movies m ON um.id_movie = m.id WHERE um.id_user = ?";
+		"SELECT m.id, m.name, m.quote, m.cover_img, m.release_date FROM user_movie um INNER JOIN movies m ON um.id_movie = m.id WHERE um.id_user = ?";
 
 	db.query(sql, id_user, (err, rows) => {
 		if (err) {
@@ -109,4 +127,5 @@ module.exports = {
 	getFavMovies,
 	addFavMovie,
 	removeFavMovie,
+	getIdFavMovies,
 };

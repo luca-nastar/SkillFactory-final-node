@@ -12,7 +12,7 @@ const createAccessToken = (data) => {
 		role,
 	};
 
-	return jwt.sign(payload, secretKey, { expiresIn: "15m" });
+	return jwt.sign(payload, secretKey, { expiresIn: "8h" });
 };
 
 const createRefreshToken = (data) => {

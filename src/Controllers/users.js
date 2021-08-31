@@ -12,6 +12,12 @@ const login = (req, res) => {
 			return res.status(401).send(err);
 		}
 
+		if (user.length === 0) {
+			return res
+				.status(401)
+				.json({ ok: false, msg: "Usuario y/o contraseña incorrecta." });
+		}
+
 		if (!user) {
 			return res
 				.status(401)
@@ -30,7 +36,6 @@ const login = (req, res) => {
 					.status(401)
 					.json({ ok: false, msg: "Usuario y/o contraseña incorrecta." });
 			}
-
 			return res.status(200).json({
 				ok: true,
 				accessToken: createAccessToken(user[0]),

@@ -1,10 +1,10 @@
 exports.addMovieValidator = (req, res, next) => {
-	const { name, description, cover_img } = req.body;
+	const { name, cover_img, quote, release_date } = req.body;
 
 	const urlRegexp =
 		/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
 
-	if (!name || !description) {
+	if (!name || !quote || !release_date) {
 		return res.status(400).json({ ok: false, msg: "Faltan datos requeridos" });
 	}
 
@@ -18,12 +18,12 @@ exports.addMovieValidator = (req, res, next) => {
 };
 
 exports.editMovieValidator = (req, res, next) => {
-	const { name, description, cover_img } = req.body;
+	const { name, cover_img, quote, release_date } = req.body;
 
 	const urlRegexp =
 		/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
 
-	if (!name && !description && !cover_img) {
+	if (!name && !quote && !cover_img && !release_date) {
 		return res.status(400).json({ ok: false, msg: "Faltan datos" });
 	}
 
